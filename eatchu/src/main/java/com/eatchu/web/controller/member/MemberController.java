@@ -10,27 +10,27 @@ public class MemberController {
 	@RequestMapping("detail")
 	public String detail() {
 		
-		return "/WEB-INF/views/member/detail.jsp";
+		return "member/detail";
 	}
 	@RequestMapping("list")
 	public String friendList() {
 		
-		return "/WEB-INF/views/member/list.jsp";
+		return "member/list";
 	}
 	@RequestMapping("mypage")
 	public String mypage() {
 		
-		return "/WEB-INF/views/member/mypage.jsp";
+		return "member/mypage";
 	}
 
 	@RequestMapping("store/list")
 	public String storeList() {
 		
-		return "/WEB-INF/views/member/store/list.jsp";
+		return "member/store/list";
 	}
 	@RequestMapping("store/reg")
 	public String reg() {
 		
-		return "/WEB-INF/views/member/store/reg.jsp";
+		return "member/store/reg";
 	}
 }
