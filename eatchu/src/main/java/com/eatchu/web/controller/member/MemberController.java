@@ -10,27 +10,22 @@ public class MemberController {
 	@RequestMapping("detail")
 	public String detail() {
 		
-		return "member/detail";
+		return "member.detail";
 	}
 	@RequestMapping("list")
 	public String friendList() {
 		
-		return "member/list";
+		return "member.list";
 	}
 	@RequestMapping("mypage")
 	public String mypage() {
 		
-		return "member/mypage";
+		return "member.mypage";
 	}
 
-	@RequestMapping("store/list")
-	public String storeList() {
-		
-		return "member/store/list";
-	}
 	@RequestMapping("store/reg")
 	public String reg() {
 		
-		return "member/store/reg";
+		return "member.store.reg";
 	}
 }

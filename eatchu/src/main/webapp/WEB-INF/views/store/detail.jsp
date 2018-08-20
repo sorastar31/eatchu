@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>내말 맛집</title>
 </head>
 <body>
-
+	상세
 </body>
 </html>
