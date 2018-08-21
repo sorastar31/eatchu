@@ -3,7 +3,10 @@
 <style>
 </style>
 
-<header id="header"> 이곳은 헤더입니다. </header>
+<header id="header"> 
+<h1 class="hidden">내말맛집</h1>
+
+</header>
 
 <script>
 	
