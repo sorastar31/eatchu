@@ -142,13 +142,13 @@ a{
 			<div>
 				<div class="photo" style="background: url('') no-repeat center; background-size: cover;"></div>
 				<div class="userId">아이디(닉네임)</div>
-				<div class="auth-status"><a href="">로그인</a></div>
+				<div class="auth-status"><a href="/login">로그인</a></div>
 			</div>
 		</section>
 		<section id="set-menu">
 			<h1 class="hidden">설정메뉴</h1>
 			<ul>
-				<li><a href="">프로필</a></li>
+				<li><a href="/eatchu/member/detail">프로필</a></li>
 				<li><a href="">공지사항</a></li>
 				<li><a href="">버전정보</a></li>
 				<li><a href="">알림</a></li>
