@@ -2,14 +2,22 @@ package com.eatchu.web.dao.mybatis;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.eatchu.web.dao.MemberDao;
 import com.eatchu.web.entity.Member;
 
 public class MybatisMemberDao implements MemberDao {
 
+	@Autowired
+	private SqlSession sqlSession;
+	
 	@Override
 	public int insert(Member member) {
-		// TODO Auto-generated method stub
+		
+		
+		
 		return 0;
 	}
 
