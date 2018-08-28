@@ -33,7 +33,7 @@ a{
 	padding: 0px;
 }
 .back-button{
-	background: url("/eatchu/resources/images/icon-set.png") no-repeat 0px -200px;
+	background: url("/eatchu/resources/images/icon-set.png") no-repeat 10px -200px;
 }
 .setting-button{
 	background: url("/eatchu/resources/images/icon-set.png") no-repeat -40px -200px;
