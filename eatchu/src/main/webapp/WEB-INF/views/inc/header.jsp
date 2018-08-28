@@ -51,6 +51,7 @@ a{
 	height: 40px;
 	background: #fff;
 	text-align: center;
+	border-bottom: 1px solid rgb(160,160,160);
 	
 	position: relative;
 }
