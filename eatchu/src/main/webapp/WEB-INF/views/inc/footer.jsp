@@ -72,7 +72,7 @@
 		content: "";
 		display: block;
 		width: 100%;
-		height: 100%;
+		height: 0%;
 		background: #000;
 		position: fixed;
 		bottom: 50px;
