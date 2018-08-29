@@ -53,7 +53,10 @@ a{
 	text-align: center;
 	border-bottom: 1px solid rgb(160,160,160);
 	
-	position: relative;
+	position: fixed;
+	top: 0px;
+	
+	z-index: 10;
 }
 	#header > h1{
 		display: inline-block;

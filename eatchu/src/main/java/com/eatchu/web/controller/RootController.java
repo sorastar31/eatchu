@@ -17,4 +17,9 @@ public class RootController {
 	public String index() {
 		return "home.index";
 	}
+	
+	@GetMapping("recommend")
+	public String recommend() {
+		return "home.recommend";
+	}
 }

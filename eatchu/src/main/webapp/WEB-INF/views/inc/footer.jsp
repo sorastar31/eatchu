@@ -9,7 +9,7 @@
 	bottom: 0px;
 	margin: 0 auto;
 	border-top: 1px solid #e9e9e9;	
-	
+	background: #fff;
 	z-index: 1;	
 }
 	.button{
