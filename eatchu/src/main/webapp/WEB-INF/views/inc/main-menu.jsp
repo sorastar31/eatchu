@@ -47,6 +47,7 @@
 		width: 100%;
 		height:50px;
 		background: #fff;
+		z-index: 10px;
 	}
 	#main-menu .mystore{
  		left: 0%;
