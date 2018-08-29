@@ -20,6 +20,11 @@
 	}
 	.overlap{
 		position: absolute;
+	}
+	.margin-auto{
+		position: relative;
+		width: 50px;
+		height: 50px;
 		margin: 0 auto;
 	}
 	.main-button-box{
@@ -29,12 +34,19 @@
  		background: white;
 	}
 	
+	.main-menu-link{
+		position: absolute;
+		width: 100%;
+		height: 50px;
+		top:0px;
+		z-index: 1;
+	}
+	
 	#main-menu{
 		position: fixed;
 		width: 100%;
 		height:50px;
 		background: #fff;
-		border-bottom: 1px solid rgb(160,160,160);
 	}
 	#main-menu .mystore{
  		left: 0%;
@@ -55,24 +67,41 @@
 		background: url("/eatchu/resources/images/icon-set.png") no-repeat -100px 0px;
 	}
 	
+	.main-button-box > a:hover+div > div:nth-child(2){
+		transition: 500ms ease width;
+		width: 50px;
+	}
+	
+	
+	
+	
 </style>
 
 <section id="main-menu">
 	<h1 class="hidden">메인항목 메뉴</h1>
 	<div class="mystore main-button-box">
-		<div class="gray-box overlap"></div>
-		<div class="pink-box overlap"></div>
-		<div class="icon mystore-icon overlap"></div>
+		<a href="" class="main-menu-link"></a>
+		<div class="margin-auto">
+			<div class="gray-box overlap"></div>
+			<div class="pink-box overlap"></div>
+			<div class="icon mystore-icon overlap"></div>
+		</div>
 	</div>
 	<div class="friends main-button-box">
-		<div class="gray-box overlap"></div>
-		<div class="pink-box overlap"></div>
-		<div class="icon friends-icon overlap"></div>
+		<a href="" class="main-menu-link"></a>
+		<div class="margin-auto">
+			<div class="gray-box overlap"></div>
+			<div class="pink-box overlap"></div>
+			<div class="icon friends-icon overlap"></div>
+		</div>
 	</div>
 	<diV class="public main-button-box">
-		<div class="gray-box overlap"></div>
-		<div class="pink-box overlap"></div>
-		<div class="icon public-icon overlap"></div>
+		<a href="" class="main-menu-link"></a>
+		<div class="margin-auto">	
+			<div class="gray-box overlap"></div>
+			<div class="pink-box overlap"></div>
+			<div class="icon public-icon overlap"></div>
+		</div>
 	</diV>
 </section>
 
