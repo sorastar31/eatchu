@@ -44,9 +44,11 @@
 	
 	#main-menu{
 		position: fixed;
+		top:41px;
 		width: 100%;
 		height:50px;
 		background: #fff;
+		z-index: 10;
 	}
 	#main-menu .mystore{
  		left: 0%;
