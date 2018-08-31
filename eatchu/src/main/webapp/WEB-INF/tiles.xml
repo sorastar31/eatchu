@@ -36,19 +36,31 @@
     <put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
   </definition>
 
-  <definition name="home.recommend" template="/WEB-INF/views/inc/layout.jsp">
+ <definition name="customer.friend" template="/WEB-INF/views/inc/layout.jsp">
   	<put-attribute name="header" value="/WEB-INF/views/inc/header.jsp"/>
   	<put-attribute name="main-menu" value="/WEB-INF/views/inc/main-menu.jsp"/>
-  	<put-attribute name="main" value="/WEB-INF/views/recommend.jsp"/>
+  	<put-attribute name="main" value="/WEB-INF/views/customer/friend.jsp"/>
+  	<put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp"/>
+   </definition>
+
+  <definition name="customer.recommend" template="/WEB-INF/views/inc/layout.jsp">
+  	<put-attribute name="header" value="/WEB-INF/views/inc/header.jsp"/>
+  	<put-attribute name="main-menu" value="/WEB-INF/views/inc/main-menu.jsp"/>
+  	<put-attribute name="main" value="/WEB-INF/views/customer/recommend.jsp"/>
   	<put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp"/>
    </definition>
   
+  <definition name="customer.*" template="/WEB-INF/views/inc/nomenu-layout.jsp">
+  	<put-attribute name="header" value="/WEB-INF/views/inc/header.jsp"/>
+  	<put-attribute name="main" value="/WEB-INF/views/customer/{1}.jsp"/>
+  	<put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp"/>
+   </definition>
+ 
   <definition name="home.*" template="/WEB-INF/views/inc/nomenu-layout.jsp">
   	<put-attribute name="header" value="/WEB-INF/views/inc/header.jsp"/>
   	<put-attribute name="main" value="/WEB-INF/views/{1}.jsp"/>
   	<put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp"/>
    </definition>
-   
      
 </tiles-definitions>
 

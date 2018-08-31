@@ -8,18 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class RootController {
 	
-	@GetMapping("signup")
-	public String signup() {
-		return "home.signup";
-	}
-	
 	@GetMapping("index")
 	public String index() {
 		return "home.index";
 	}
 	
-	@GetMapping("recommend")
-	public String recommend() {
-		return "home.recommend";
-	}
 }
+
