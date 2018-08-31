@@ -25,25 +25,25 @@
 		bottom: 0px;
 	}
 		.up-menu-button{
-			background: url("/eatchu/resources/images/icon-set.png") no-repeat 0px -100px;
+			background: url("/resources/images/icon-set.png") no-repeat 0px -100px;
 			left: 15%;
 		}
 		.home-button{
-			background: url("/eatchu/resources/images/icon-set.png") no-repeat -50px -100px;
+			background: url("/resources/images/icon-set.png") no-repeat -50px -100px;
 			left: 43%;
 		}
 		.reg-button{
-			background: url("/eatchu/resources/images/icon-set.png") no-repeat -100px -100px;
+			background: url("/resources/images/icon-set.png") no-repeat -100px -100px;
 			left: 72%;
 		}	
 			.up-menu-button:hover {
-				background: url("/eatchu/resources/images/icon-set.png") no-repeat 0px -150px;
+				background: url("/resources/images/icon-set.png") no-repeat 0px -150px;
 			}
 			.home-button:hover{
-				background: url("/eatchu/resources/images/icon-set.png") no-repeat -50px -150px;
+				background: url("/resources/images/icon-set.png") no-repeat -50px -150px;
 			}
 			.reg-button:hover{
-				background: url("/eatchu/resources/images/icon-set.png") no-repeat -100px -150px;
+				background: url("/resources/images/icon-set.png") no-repeat -100px -150px;
 			}
 		
 #footer{

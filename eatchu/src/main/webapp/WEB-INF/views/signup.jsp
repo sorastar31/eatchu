@@ -68,7 +68,7 @@ input{
 	padding: 0px;  
 	width: 100px;
 	height: 100px;
-	background: url("/eatchu/resources/images/profile.png"); 
+	background: url("/resources/images/profile.png"); 
 	cursor: pointer; 
 	border: 1px solid #ebebeb;  
 	border-radius: .25rem; 
@@ -97,6 +97,7 @@ input{
 	 font-weight: bold;
 	 text-align: center;
 	 line-height: 20px;
+	 cursor: pointer;
 	 display: none;
  }
  
@@ -161,7 +162,7 @@ input{
 							<div class="profile-box">
 								<label for="profile-input"></label>
 								<input id="profile-input" name="profile-pic" type="file" accept=".jpg, .png, .gif" />
-								<span>X</span>
+								<span class="profile-toggle">X</span>
 							</div>
 						</td>
 					</tr>
@@ -195,3 +196,29 @@ input{
 		</form>
 	</section>
 </section>
+
+<script type="text/javascript">
+
+window.addEventListener("load",function(){
+	var profileBox = document.querySelector(".profile-box"); 
+	var profileInput = profileBox.querySelector("#profile-input");
+	var profileLabel = profileBox.querySelector("label");
+	var profileToggle = profileBox.querySelector(".profile-toggle");
+
+	profileInput.onchange = function(e){
+		var reader = new FileReader();
+		reader.readAsDataURL(e.target.files[0]);
+		reader.onload = function(e){
+			var url = e.target.result;
+			profileLabel.style.background = 'url("'+url+'") no-repeat center';
+			profileLabel.style.backgroundSize = "cover";
+			profileToggle.style.display = "block";
+			};
+	};
+
+	profileToggle.onclick = function(){
+		profileLabel.style.background = 'url("/eatchu/resources/images/profile.png")';
+		this.style.display = "none";
+	};
+	});
+</script>
