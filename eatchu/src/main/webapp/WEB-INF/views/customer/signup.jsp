@@ -93,7 +93,7 @@ input{
 	 border-radius: 10px; 
 	 right: 0px;
 	 bottom: 0px;
-	 background: black;
+	 background: #a0a0a0;
 	 font-weight: bold;
 	 text-align: center;
 	 line-height: 20px;
@@ -217,7 +217,7 @@ window.addEventListener("load",function(){
 	};
 
 	profileToggle.onclick = function(){
-		profileLabel.style.background = 'url("/eatchu/resources/images/profile.png")';
+		profileLabel.style.background = 'url("/resources/images/profile.png")';
 		this.style.display = "none";
 	};
 	});

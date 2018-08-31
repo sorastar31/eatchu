@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
 /* -----------reset--------------------- */
 body{
@@ -146,7 +147,12 @@ a{
 			<div>
 				<div class="photo" style="background: url('') no-repeat center; background-size: cover;"></div>
 				<div class="userId">아이디(닉네임)</div>
-				<div class="auth-status"><a href="/login">로그인</a></div>
+				<c:if test="${empty pageContext.request.userPrincipal}">
+				<div class="auth-status"><a href="/customer/login">로그인</a></div>
+				</c:if>
+				<c:if test="${not empty pageContext.request.userPrincipal}">
+				<div class="auth-status"><a href="/customer/logout">로그아웃</a></div>
+				</c:if>
 			</div>
 		</section>
 		<section id="set-menu">
