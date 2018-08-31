@@ -7,9 +7,9 @@
 .list-sm{
 	margin: 0px 15px;
 	margin-top: 15px;
-	border-top: 3px solid #e9e9e9;
+	padding-bottom: 10px;
+	border-bottom: 3px solid #e9e9e9;
 }
-
 .img{
 	width: 100px;
 	height: 100px;
@@ -23,15 +23,29 @@
 	overflow: auto;
 }
 #search-box{
+	position: fixed;
+	margin-left: 15px;
+	top: 91px;
+	left: 0px;
+	right: 0px;
+	width: 90%;
+	height: 50px;
+	background: #fff;
+
+	border-bottom: 3px solid #e9e9e9;
+	
+	z-index: 5;
 	text-align: center;
 }
 	#search-box > input{
+		margin: 5px 10px;
 		width: 80%;
 		height: 30px;
 	}
 
 .recommend-list{
 	position: relative;
+	top: 30px;
 }
 	.list-title{
 		position: absolute;
@@ -42,7 +56,7 @@
 	}
 		.etc{
 			position: absolute;
-			right: 0px;
+			right: 10px;
 			
 			color: #979797;
 			font-size: 15px;
@@ -57,6 +71,9 @@
 				.list > tr{
 					border-spacing: 5px;
 				}
+#friend-list{
+	margin-top: 5px;
+}
 
 </style>
 <main id="main">
@@ -75,7 +92,9 @@
 		<div class="etc">더보기∨</div>	
 		<table class="list" cellspacing="10">
 			<tr>
-				<td><img class="img" src=""></td>
+				<td>
+					<div class="img" style="background: url('') no-repeat center; background-size: cover;"></div>
+				</td>
 				<td>
 					<ul>
 						<li>돈코보쌈</li>
@@ -85,7 +104,9 @@
 				</td>
 			</tr>
 			<tr>
-				<td><img class="img" src=""></td>
+				<td>
+					<div class="img" style="background: url('') no-repeat center; background-size: cover;"></div>
+				</td>
 				<td>
 					<ul>
 						<li>서브웨이 홍대점</li>
@@ -103,7 +124,9 @@
 		<div class="etc">더보기∨</div>	
 		<table class="list" cellspacing="10">
 			<tr>
-				<td><img class="img" src=""></td>
+				<td>
+					<div class="img" style="background: url('') no-repeat center; background-size: cover;"></div>
+				</td>
 				<td>
 					<ul>
 						<li>newlec(뉴렉)</li>
@@ -112,7 +135,9 @@
 				</td>
 			</tr>
 			<tr>
-				<td><img class="img" src=""></td>
+				<td>
+					<div class="img" style="background: url('') no-repeat center; background-size: cover;"></div>
+				</td>
 				<td>
 					<ul>
 						<li>seolceo(슬사장)</li>
