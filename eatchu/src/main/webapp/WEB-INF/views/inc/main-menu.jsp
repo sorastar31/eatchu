@@ -60,13 +60,13 @@
  		left:66.6%;
 	}
 	#main-menu .mystore-icon{
-		background: url("/eatchu/resources/images/icon-set.png") no-repeat 0px 0px; 
+		background: url("/resources/images/icon-set.png") no-repeat 0px 0px; 
 	}
 	#main-menu .friends-icon{
-		background: url("/eatchu/resources/images/icon-set.png") no-repeat -50px 0px;
+		background: url("/resources/images/icon-set.png") no-repeat -50px 0px;
 	}
 	#main-menu .public-icon{
-		background: url("/eatchu/resources/images/icon-set.png") no-repeat -100px 0px;
+		background: url("/resources/images/icon-set.png") no-repeat -100px 0px;
 	}
 	
 	.main-button-box > a:hover+div > div:nth-child(2){

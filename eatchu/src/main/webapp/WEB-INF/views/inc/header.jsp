@@ -33,10 +33,10 @@ a{
 	padding: 0px;
 }
 .back-button{
-	background: url("/eatchu/resources/images/icon-set.png") no-repeat 10px -200px;
+	background: url("/resources/images/icon-set.png") no-repeat 10px -200px;
 }
 .setting-button{
-	background: url("/eatchu/resources/images/icon-set.png") no-repeat -40px -200px;
+	background: url("/resources/images/icon-set.png") no-repeat -40px -200px;
 }
 .photo{
 	width: 150px;
@@ -130,7 +130,7 @@ a{
 <header id="header">
 	<h1>
 		<picture>
-			<img src="/eatchu/resources/images/logo.png" alt="내말맛집">
+			<img src="/resources/images/logo.png" alt="내말맛집">
 		</picture>
 	</h1>
 	<section id="header-button-box">
@@ -152,7 +152,7 @@ a{
 		<section id="set-menu">
 			<h1 class="hidden">설정메뉴</h1>
 			<ul>
-				<li><a href="/eatchu/member/detail">프로필</a></li>
+				<li><a href="/member/detail">프로필</a></li>
 				<li><a href="">공지사항</a></li>
 				<li><a href="">버전정보</a></li>
 				<li><a href="">알림</a></li>

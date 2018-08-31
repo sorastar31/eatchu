@@ -68,7 +68,7 @@ input{
 	padding: 0px;  
 	width: 100px;
 	height: 100px;
-	background: url("/eatchu/resources/images/profile.png"); 
+	background: url("/resources/images/profile.png"); 
 	cursor: pointer; 
 	border: 1px solid #ebebeb;  
 	border-radius: .25rem; 
