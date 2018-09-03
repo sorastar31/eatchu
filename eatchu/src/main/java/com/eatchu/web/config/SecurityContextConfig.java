@@ -1,6 +1,7 @@
 package com.eatchu.web.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -9,14 +10,19 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.User.UserBuilder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
+@ComponentScan(basePackages="com.eatchu.web.config")
 @EnableWebSecurity
 public class SecurityContextConfig extends WebSecurityConfigurerAdapter{
 	
 	
 	@Autowired
-	private DriverManagerDataSource dataSource;	
+	private DriverManagerDataSource dataSource;
+	@Autowired
+	private AuthenticationSuccessHandler successHandler;
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -28,8 +34,14 @@ public class SecurityContextConfig extends WebSecurityConfigurerAdapter{
 			.anyRequest().permitAll()
 			.and()
 			.formLogin()
+				.defaultSuccessUrl("/index")
 				.loginPage("/customer/login")
-				.loginProcessingUrl("/customer/login");
+				.loginProcessingUrl("/customer/login")
+				.successHandler(successHandler)
+			.and()
+			.logout()
+				.logoutUrl("/customer/logout")
+				.logoutSuccessUrl("/index");
 		
 			/*.authorizeRequests()
 			.antMatchers("/student/**").hasAnyRole("ADMIN, STUDENT")
@@ -67,6 +79,7 @@ public class SecurityContextConfig extends WebSecurityConfigurerAdapter{
 		.withUser(users
 				.username("sora")
 				.password("$2a$10$zpE1ThBwaRlZM2uMMShksurhrRjw/QtUZXB4cfON4.owLTFqkyQx.")
-				.roles("MEMBER"));;
+				.roles("MEMBER"))
+		.passwordEncoder(new BCryptPasswordEncoder());
 	}
 }
