@@ -1,6 +1,7 @@
 package com.eatchu.web.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -13,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
+@ComponentScan(basePackages="com.eatchu.web.config")
 @EnableWebSecurity
 public class SecurityContextConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
