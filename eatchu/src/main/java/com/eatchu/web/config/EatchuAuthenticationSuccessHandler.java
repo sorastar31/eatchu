@@ -11,13 +11,11 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.stereotype.Component;
 
 @Component
-public class EatchuAuthenticationSuccesshandler implements AuthenticationSuccessHandler {
+public class EatchuAuthenticationSuccessHandler implements AuthenticationSuccessHandler{
 
 	@Override
-	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
-			throws IOException, ServletException {
-
-		response.sendRedirect("/index");
+	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
+			Authentication authentication) throws IOException, ServletException {
+		
 	}
-
 }

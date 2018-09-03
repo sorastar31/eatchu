@@ -12,11 +12,7 @@ public class MemberController {
 		
 		return "member.detail";
 	}
-	@RequestMapping("list")
-	public String friendList() {
-		
-		return "member.list";
-	}
+
 	@RequestMapping("mypage")
 	public String mypage() {
 		

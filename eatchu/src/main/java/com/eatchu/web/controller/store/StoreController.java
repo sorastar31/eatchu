@@ -11,10 +11,7 @@ public class StoreController {
 	public String detail() {
 		return "store.detail";
 	}
-	@RequestMapping("list")
-	public String list() {
-		return "store.list";
-	}
+
 	@RequestMapping("reviews")
 	public String reviews() {
 		return "store.reviews";

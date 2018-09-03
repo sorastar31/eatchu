@@ -17,8 +17,6 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 @ComponentScan(basePackages="com.eatchu.web.config")
 @EnableWebSecurity
 public class SecurityContextConfig extends WebSecurityConfigurerAdapter{
-	
-	
 	@Autowired
 	private DriverManagerDataSource dataSource;
 	@Autowired
@@ -32,15 +30,15 @@ public class SecurityContextConfig extends WebSecurityConfigurerAdapter{
 /*			.antMatchers("//**").hasRole("ADMIN")*/			
 			.antMatchers("/member/**").hasAnyRole("ADMIN, MEMBER")
 			.anyRequest().permitAll()
-			.and()
+				.and()
 			.formLogin()
 				.defaultSuccessUrl("/index")
 				.loginPage("/customer/login")
-				.loginProcessingUrl("/customer/login")
+				.loginProcessingUrl("/login")
 				.successHandler(successHandler)
-			.and()
+				.and()
 			.logout()
-				.logoutUrl("/customer/logout")
+				.logoutUrl("/member/logout")
 				.logoutSuccessUrl("/index");
 		
 			/*.authorizeRequests()
