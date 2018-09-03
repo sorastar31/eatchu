@@ -9,14 +9,17 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.User.UserBuilder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityContextConfig extends WebSecurityConfigurerAdapter{
-	
-	
 	@Autowired
 	private DriverManagerDataSource dataSource;	
+	
+	@Autowired
+	private AuthenticationSuccessHandler successHandler;
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -26,10 +29,16 @@ public class SecurityContextConfig extends WebSecurityConfigurerAdapter{
 /*			.antMatchers("//**").hasRole("ADMIN")*/			
 			.antMatchers("/member/**").hasAnyRole("ADMIN, MEMBER")
 			.anyRequest().permitAll()
-			.and()
+				.and()
 			.formLogin()
+				.defaultSuccessUrl("/index")
 				.loginPage("/customer/login")
-				.loginProcessingUrl("/customer/login");
+				.loginProcessingUrl("/login")
+				.successHandler(successHandler)
+				.and()
+			.logout()
+				.logoutUrl("/member/logout")
+				.logoutSuccessUrl("/index");
 		
 			/*.authorizeRequests()
 			.antMatchers("/student/**").hasAnyRole("ADMIN, STUDENT")
@@ -67,6 +76,7 @@ public class SecurityContextConfig extends WebSecurityConfigurerAdapter{
 		.withUser(users
 				.username("sora")
 				.password("$2a$10$zpE1ThBwaRlZM2uMMShksurhrRjw/QtUZXB4cfON4.owLTFqkyQx.")
-				.roles("MEMBER"));;
+				.roles("MEMBER"))
+		.passwordEncoder(new BCryptPasswordEncoder());
 	}
 }
