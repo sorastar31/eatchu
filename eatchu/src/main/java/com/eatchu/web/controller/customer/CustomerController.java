@@ -18,8 +18,18 @@ public class CustomerController {
 		return "customer.login";
 	}
 	
+	@GetMapping("memberDetail")
+	public String memberDetail() {
+		return "customer.memberDetail";
+	}
+	
 	@GetMapping("recommend")
 	public String recommend() {
 		return "customer.recommend";
+	}
+	
+	@GetMapping("friend")
+	public String friend() {
+		return "customer.friend";
 	}
 }
