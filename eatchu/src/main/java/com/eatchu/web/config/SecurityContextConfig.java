@@ -18,8 +18,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 @EnableWebSecurity
 public class SecurityContextConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
-	private DriverManagerDataSource dataSource;	
-	
+	private DriverManagerDataSource dataSource;
 	@Autowired
 	private AuthenticationSuccessHandler successHandler;
 	
