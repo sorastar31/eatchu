@@ -150,7 +150,7 @@ input{
 </style>
 
 <section id="main">
-	<h1>회원가입</h1>
+	<h1>마이페이지</h1>
 	<section id="sign-info">
 		<h1 class="hidden">정보 입력 부분</h1>
 		<form>

@@ -88,14 +88,14 @@
 			<span class="hidden">삭제</span>
 		</button>
 	</section>	
-	<security:authorize access="!isAuthenticated()">
+	<%-- <security:authorize access="!isAuthenticated()">
 		<section id="friend-list" class="list">
 			<h1 class="hidden">내친구목록</h1>
 			<div id="list-title">내 친구</div>
 				<div id="notice"><a href="/customer/login">로그인 해주세요</a></div>
 		</section>
 	</security:authorize>
-	<security:authorize access="isAuthenticated()">
+	<security:authorize access="isAuthenticated()"> --%>
 		<section id="friend-list" class="list">
 			<h1 class="hidden">내친구목록</h1>
 			<div id="list-title">내 친구</div>
@@ -125,7 +125,7 @@
 				</tr>
 			</table>
 		</section>
-	</security:authorize>
+	<%-- </security:authorize> --%>
 	
 	<section id="recommend-list" class="list">
 		<h1 class="hidden">추천친구리스트</h1>

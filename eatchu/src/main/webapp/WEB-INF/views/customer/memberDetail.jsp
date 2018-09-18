@@ -32,10 +32,10 @@
 <main>
 	<section id="member-info">
 		<h1 class="hidden">member정보</h1>
-		<span id="member-title">sorastar31</span>
+		<span id="member-title">세시루</span>
 		<div>
 			<img>
-			<span>sorastar31(세시루)</span>
+			<span>sorastar31@gmail.com(세시루)</span>
 		</div>
 		<input class="star-button" type="button" value="친구추가"/>
 	</section>
