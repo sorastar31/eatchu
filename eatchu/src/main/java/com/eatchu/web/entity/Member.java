@@ -1,82 +1,90 @@
 package com.eatchu.web.entity;
 
-import java.sql.Date;
-
 public class Member {
 	
-	private String id;
+	private long id;
+	private String email;
 	private String nickname;
 	private String pwd;
-	private String img;
-	private int birthYear;
-	private String gender;
-	private Date regDate;
+	private int genderId;
+	private int birthday;
+	private String photo;
 	
 	public Member() {
-		
+		// TODO Auto-generated constructor stub
 	}
 
-	public Member(String id, String nickname, String pwd, String img, int birthYear, String gender, Date regDate) {
+	public Member(long id, String email, String nickname, String pwd, int genderId, int birthday, String photo) {
 		super();
 		this.id = id;
+		this.email = email;
 		this.nickname = nickname;
 		this.pwd = pwd;
-		this.img = img;
-		this.birthYear = birthYear;
-		this.gender = gender;
-		this.regDate = regDate;
-	}
-	
-	public Date getRegDate() {
-		return regDate;
+		this.genderId = genderId;
+		this.birthday = birthday;
+		this.photo = photo;
 	}
 
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
-	}
-
-	public String getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(String id) {
+
+	public void setId(long id) {
 		this.id = id;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public String getNickname() {
 		return nickname;
 	}
+
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
+
 	public String getPwd() {
 		return pwd;
 	}
+
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
-	public String getImg() {
-		return img;
+
+	public int getGenderId() {
+		return genderId;
 	}
-	public void setImg(String img) {
-		this.img = img;
+
+	public void setGenderId(int genderId) {
+		this.genderId = genderId;
 	}
-	public int getBirthYear() {
-		return birthYear;
+
+	public int getBirthday() {
+		return birthday;
 	}
-	public void setBirthYear(int birthYear) {
-		this.birthYear = birthYear;
+
+	public void setBirthday(int birthday) {
+		this.birthday = birthday;
 	}
-	public String getGender() {
-		return gender;
+
+	public String getPhoto() {
+		return photo;
 	}
-	public void setGender(String gender) {
-		this.gender = gender;
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 
 	@Override
 	public String toString() {
-		return "Member [id=" + id + ", nickname=" + nickname + ", pwd=" + pwd + ", img=" + img + ", birthYear="
-				+ birthYear + ", gender=" + gender + ", regDate=" + regDate + "]";
+		return "Member [id=" + id + ", email=" + email + ", nickname=" + nickname + ", pwd=" + pwd + ", genderId="
+				+ genderId + ", birthday=" + birthday + ", photo=" + photo + "]";
 	}
-	
 	
 }
