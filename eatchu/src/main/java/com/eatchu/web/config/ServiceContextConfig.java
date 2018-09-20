@@ -22,10 +22,10 @@ public class ServiceContextConfig {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://211.238.142.37:3306/eatchudb");
+		dataSource.setUrl("jdbc:mysql://211.238.142.37:3306/eatchudb?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8");
 		dataSource.setUsername("eatchu");
 		dataSource.setPassword("soakfaktwlq91");
-		
+
 		return dataSource;
 	}
 	

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <style>
 /* -----------reset--------------------- */
 body{
@@ -145,14 +146,21 @@ a{
 		<section id="profile">
 			<h1 class="hidden">프로필</h1>
 			<div>
-				<div class="photo" style="background: url('') no-repeat center; background-size: cover;"></div>
-				<div class="userId">아이디(닉네임)</div>
-				<c:if test="${empty pageContext.request.userPrincipal}">
-				<div class="auth-status"><a href="/customer/login">로그인</a></div>
-				</c:if>
-				<c:if test="${not empty pageContext.request.userPrincipal}">
-				<div class="auth-status"><a href="/customer/logout">로그아웃</a></div>
-				</c:if>
+				<security:authorize access="isAuthenticated()">
+					<div class="photo" style="background: url('') no-repeat center; background-size: cover;"></div>
+					<div class="userId">
+						<security:authentication property="name"/>(닉네임)님
+					</div>
+					<div class="auth-status"><a href="/customer/logout">로그아웃</a></div>
+				</security:authorize>
+				
+				
+				<security:authorize access="!isAuthenticated()">
+					<div class="photo" style="background: url('/resources/images/profile.png') no-repeat center; background-size: cover;"></div>
+					<div class="userId">로그인해주세요</div>
+					<div class="auth-status"><a href="/customer/login">로그인</a></div>
+				</security:authorize>
+				
 			</div>
 		</section>
 		<section id="set-menu">
