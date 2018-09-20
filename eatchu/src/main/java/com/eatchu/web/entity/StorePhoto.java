@@ -1,7 +1,12 @@
 package com.eatchu.web.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class StorePhoto {
 		
+	@Id
 	private long id;
 	private String content;
 	private long storeId;
