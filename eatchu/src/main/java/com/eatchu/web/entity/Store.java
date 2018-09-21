@@ -1,12 +1,17 @@
 package com.eatchu.web.entity;
 
+import java.sql.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class Store {
 	
 	@Id
+	@GeneratedValue
 	private long id;
 	private String name;
 	private String location;
@@ -15,13 +20,15 @@ public class Store {
 	private String tel;
 	private String content;
 	private long regId;
+	@Column(insertable=false)
+	private Date regDate;
 	
 	public Store() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Store(long id, String name, String location, double lat, double lng, String tel, String content,
-			long regId) {
+			long regId, Date regDate) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -31,6 +38,7 @@ public class Store {
 		this.tel = tel;
 		this.content = content;
 		this.regId = regId;
+		this.regDate = regDate;
 	}
 
 	public long getId() {
@@ -96,11 +104,19 @@ public class Store {
 	public void setRegId(long regId) {
 		this.regId = regId;
 	}
+	
+	public Date getRegDate() {
+		return regDate;
+	}
+
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
+	}
 
 	@Override
 	public String toString() {
 		return "Store [id=" + id + ", name=" + name + ", location=" + location + ", lat=" + lat + ", lng=" + lng
-				+ ", tel=" + tel + ", content=" + content + ", regId=" + regId + "]";
+				+ ", tel=" + tel + ", content=" + content + ", regId=" + regId +", regDate="+regDate + "]";
 	}
 	
 }
