@@ -2,8 +2,7 @@ package com.eatchu.web.config;
 
 import javax.servlet.Filter;
 
-
-
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 //web.xml에서 DispatcheServlet 생성한 부분을 대신함
@@ -60,8 +59,12 @@ public class DispatcherServletInitializer extends AbstractAnnotationConfigDispat
 	@Override
 	protected Filter[] getServletFilters() {
 		
+		CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
+		characterEncodingFilter.setEncoding("UTF-8");
+		characterEncodingFilter.setForceEncoding(true);
+		
 		return new Filter[]{
-				
+					characterEncodingFilter
 				};
 	}
 	

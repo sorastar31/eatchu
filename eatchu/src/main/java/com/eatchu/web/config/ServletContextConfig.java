@@ -1,8 +1,14 @@
 package com.eatchu.web.config;
 
+import java.nio.charset.Charset;
+import java.util.List;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -49,10 +55,33 @@ public class ServletContextConfig implements WebMvcConfigurer{
 		return tilesConfigurer;
 	}
 	
+	//파일이 포함된 mutipartRequest를 resolve 해주는 객체
+	@Bean
+	public CommonsMultipartResolver multipartResolver() {
+		CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+		resolver.setMaxUploadSize(1024*1024*20);
+		resolver.setMaxUploadSizePerFile(1024*1024*10);
+		resolver.setDefaultEncoding("UTF-8");
+		
+		return resolver;
+		
+	}
+
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
+	
+	//resposeBody 한글이 깨질때
+	@Override
+	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+		
+		StringHttpMessageConverter converter = new StringHttpMessageConverter(Charset.forName("UTF-8"));
+		converter.setWriteAcceptCharset(false);
+		
+		converters.add(converter);
+	}
+	
 	
 }

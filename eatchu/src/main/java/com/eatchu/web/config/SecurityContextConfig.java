@@ -1,15 +1,14 @@
 package com.eatchu.web.config;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.User.UserBuilder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
@@ -17,8 +16,9 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 @ComponentScan(basePackages="com.eatchu.web.config")
 @EnableWebSecurity
 public class SecurityContextConfig extends WebSecurityConfigurerAdapter{
+
 	@Autowired
-	private DriverManagerDataSource dataSource;
+	private DataSource dataSource;
 	@Autowired
 	private AuthenticationSuccessHandler successHandler;
 	
@@ -61,23 +61,14 @@ public class SecurityContextConfig extends WebSecurityConfigurerAdapter{
 			.usersByUsernameQuery("select id, pwd password, 1 enabled from Member where id=?")
 			.authoritiesByUsernameQuery("select memberId id, roleName authority from MemberRole where memberId=?")
 			.passwordEncoder(new BCryptPasswordEncoder());*/
-			
 		
+		auth.jdbcAuthentication()
+			.dataSource(dataSource)
+			//1. 내가 쿼리를 만들어서 제곤
+			//2. 약속된 인터페이스로 구현된 사용자정보 제공 객체
+			.usersByUsernameQuery("select id, pwd password, 1 enabled from Member where id=?")
+			.authoritiesByUsernameQuery("select memberId id, roleName authority from MemberRole where memberId=?")
+			.passwordEncoder(new BCryptPasswordEncoder());
 		
-		UserBuilder users = User.builder();
-		auth.inMemoryAuthentication()
-		.withUser(users
-				.username("nayo")
-				.password("$2a$10$zpE1ThBwaRlZM2uMMShksurhrRjw/QtUZXB4cfON4.owLTFqkyQx.")
-				.roles("MEMBER"))
-		.withUser(users
-				.username("woghks2045")
-				.password("$2a$10$zpE1ThBwaRlZM2uMMShksurhrRjw/QtUZXB4cfON4.owLTFqkyQx.")
-				.roles("MEMBER"))
-		.withUser(users
-				.username("sora")
-				.password("$2a$10$zpE1ThBwaRlZM2uMMShksurhrRjw/QtUZXB4cfON4.owLTFqkyQx.")
-				.roles("MEMBER"))
-		.passwordEncoder(new BCryptPasswordEncoder());
 	}
 }
