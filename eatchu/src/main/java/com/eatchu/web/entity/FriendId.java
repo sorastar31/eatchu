@@ -1,5 +1,8 @@
 package com.eatchu.web.entity;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class FriendId {
 
 	private long regId;

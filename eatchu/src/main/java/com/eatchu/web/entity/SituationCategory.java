@@ -1,7 +1,14 @@
 package com.eatchu.web.entity;
 
-public class SituationCategory {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
+public class SituationCategory {
+	
+	@Id
+	@GeneratedValue
 	private long id;
 	private String name;
 	private long categoryId;

@@ -1,20 +1,31 @@
 package com.eatchu.web.entity;
 
+import java.sql.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Member {
 	
-	private long id;
+	@Id
+	private String id;
 	private String email;
 	private String nickname;
 	private String pwd;
 	private int genderId;
 	private int birthday;
 	private String photo;
+	@Column(insertable=false)
+	private Date regDate;
 	
 	public Member() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Member(long id, String email, String nickname, String pwd, int genderId, int birthday, String photo) {
+	public Member(String id, String email, String nickname, String pwd, int genderId, int birthday, String photo,
+			Date regDate) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -23,13 +34,14 @@ public class Member {
 		this.genderId = genderId;
 		this.birthday = birthday;
 		this.photo = photo;
+		this.regDate = regDate;
 	}
 
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -81,10 +93,19 @@ public class Member {
 		this.photo = photo;
 	}
 
+	public Date getRegDate() {
+		return regDate;
+	}
+
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
+	}
+
 	@Override
 	public String toString() {
 		return "Member [id=" + id + ", email=" + email + ", nickname=" + nickname + ", pwd=" + pwd + ", genderId="
-				+ genderId + ", birthday=" + birthday + ", photo=" + photo + "]";
+				+ genderId + ", birthday=" + birthday + ", photo=" + photo + ", regDate=" + regDate + "]";
 	}
-	
+
+
 }

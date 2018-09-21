@@ -1,5 +1,7 @@
 package com.eatchu.web.entity;
 
+import java.sql.Date;
+
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
@@ -8,14 +10,16 @@ public class Friend {
 	
 	@EmbeddedId
 	private FriendId id;
+	private Date regDate;
 		
 	public Friend() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Friend(long regId, long friendId) {
+	public Friend(long regId, long friendId, Date regDate) {
 		super();
 		this.id = new FriendId(regId, friendId);
+		this.regDate = regDate;
 	}
 	
 	public long getRegId() {	
@@ -35,7 +39,7 @@ public class Friend {
 
 	@Override
 	public String toString() {
-		return "Friend [id=" + id + ", getRegId()=" + getRegId() + ", getFriendId()=" + getFriendId() + "]";
+		return "Friend [id=" + id + ", getRegId()=" + getRegId() + ", getFriendId()=" + getFriendId() +", regDate="+ regDate +"]";
 	}
 	
 	
