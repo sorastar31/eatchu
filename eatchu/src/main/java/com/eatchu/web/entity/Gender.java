@@ -1,10 +1,12 @@
 package com.eatchu.web.entity;
 
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
 public class Gender {
+	
 	@Id
 	private int id;
 	private String name;

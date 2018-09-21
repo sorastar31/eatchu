@@ -1,5 +1,6 @@
 package com.eatchu.web.entity;
 
+
 import java.sql.Date;
 
 import javax.persistence.Column;
