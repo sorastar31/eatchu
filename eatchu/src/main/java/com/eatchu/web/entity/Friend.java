@@ -5,6 +5,8 @@ import java.sql.Date;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
+import com.eatchu.web.entity.id.FriendId;
+
 @Entity
 public class Friend {
 	

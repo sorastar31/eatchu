@@ -1,4 +1,4 @@
-package com.eatchu.web.entity;
+package com.eatchu.web.entity.id;
 
 import javax.persistence.Embeddable;
 
