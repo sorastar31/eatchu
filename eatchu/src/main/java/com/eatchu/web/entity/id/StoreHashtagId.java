@@ -1,11 +1,9 @@
-package com.eatchu.web.entity;
-
-import java.io.Serializable;
+package com.eatchu.web.entity.id;
 
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class StoreHashtagId implements Serializable{
+public class StoreHashtagId {
 	
 	private long storeId;
 	private long hashtagId;

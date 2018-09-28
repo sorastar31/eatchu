@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
+import com.eatchu.web.entity.id.MemberRoleId;
+
 @Entity
 public class MemberRole {
 	

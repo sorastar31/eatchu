@@ -3,6 +3,8 @@ package com.eatchu.web.entity;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
+import com.eatchu.web.entity.id.StoreNationalId;
+
 @Entity
 public class StoreNational {
 	

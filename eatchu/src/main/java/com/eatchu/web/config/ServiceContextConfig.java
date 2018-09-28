@@ -48,7 +48,7 @@ public class ServiceContextConfig {
 		
 		LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
 		sessionFactoryBean.setDataSource(dataSource());
-		sessionFactoryBean.setPackagesToScan("com.eatchu.web.entity");
+		sessionFactoryBean.setPackagesToScan("com.eatchu.web.entity**");
 		sessionFactoryBean.setHibernateProperties(props);
 		
 		return sessionFactoryBean;
