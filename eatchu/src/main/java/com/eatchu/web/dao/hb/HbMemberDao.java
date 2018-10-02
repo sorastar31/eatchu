@@ -9,20 +9,20 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.eatchu.web.dao.FriendDao;
-import com.eatchu.web.entity.Friend;
+import com.eatchu.web.dao.MemberDao;
+import com.eatchu.web.entity.Member;
 
 @Repository
-public class HbFriendDao implements FriendDao {
+public class HbMemberDao implements MemberDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
 	
 	@Override
 	@Transactional
-	public int insert(Friend friend) {
+	public int insert(Member member) {
 		Session session = sessionFactory.getCurrentSession();
-		Object id = session.save(friend);
+		Object id = session.save(member);
 		if(id != null)
 			return 1;
 		return 0;
@@ -30,43 +30,49 @@ public class HbFriendDao implements FriendDao {
 
 	@Override
 	@Transactional
-	public int update(Friend friend) {
+	public int update(Member member) {
 		Session session = sessionFactory.getCurrentSession();
-		session.update(friend);
+		session.update(member);
 		return 1;
 	}
 
 	@Override
 	@Transactional
-	public int delete(long regId, long friendId) {
+	public int delete(String id) {
 		Session session = sessionFactory.getCurrentSession();
-		Friend friend = new Friend();
-		friend.setRegId(regId);
-		friend.setFriendId(friendId);
-		
-		session.remove(friend);
+		Member member = new Member();
+		member.setId(id);
+		session.remove(member);
 		return 1;
 	}
 
 	@Override
 	@Transactional
-	public List<Friend> getList() {
+	public Member get(String id) {
 		Session session = sessionFactory.getCurrentSession();
-		String hql = "from Friend";
-		List<Friend> list = session
-								.createQuery(hql, Friend.class)
+		Member member = session.get(Member.class, id);
+		return member;
+	}
+
+	@Override
+	@Transactional
+	public List<Member> getList() {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "from Member";
+		List<Member> list = session
+								.createQuery(hql, Member.class)
 								.getResultList();
 		return list;
 	}
 
 	@Override
 	@Transactional
-	public List<Friend> getList(long regId) {
+	public List<Member> getList(String nickname) {
 		Session session = sessionFactory.getCurrentSession();
-		String hql = "from Friend where regId = :regId";
-		List<Friend> list = session
-								.createQuery(hql, Friend.class)
-								.setParameter("regId", regId)
+		String hql = "from Member where nickname like '%:nickname%'";
+		List<Member> list = session
+								.createQuery(hql, Member.class)
+								.setParameter("nickname", nickname)
 								.getResultList();
 		return list;
 	}
