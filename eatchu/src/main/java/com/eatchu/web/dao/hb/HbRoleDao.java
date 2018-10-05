@@ -9,20 +9,20 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.eatchu.web.dao.FriendDao;
-import com.eatchu.web.entity.Friend;
+import com.eatchu.web.dao.RoleDao;
+import com.eatchu.web.entity.Role;
 
 @Repository
-public class HbFriendDao implements FriendDao {
+public class HbRoleDao implements RoleDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
 	
 	@Override
 	@Transactional
-	public int insert(Friend friend) {
+	public int insert(Role role) {
 		Session session = sessionFactory.getCurrentSession();
-		Object id = session.save(friend);
+		Object id = session.save(role);
 		if(id != null)
 			return 1;
 		return 0;
@@ -30,47 +30,41 @@ public class HbFriendDao implements FriendDao {
 
 	@Override
 	@Transactional
-	public int update(Friend friend) {
+	public int update(Role role) {
 		Session session = sessionFactory.getCurrentSession();
-		session.update(friend);
+		session.save(role);
 		return 1;
 	}
 
 	@Override
 	@Transactional
-	public int delete(long regId, long friendId) {
+	public int delete(String name) {
 		Session session = sessionFactory.getCurrentSession();
-		Friend friend = new Friend();
-		friend.setRegId(regId);
-		friend.setFriendId(friendId);
-		
-		session.remove(friend);
+		Role role = new Role();
+		role.setName(name);
+		session.remove(role);
 		return 1;
 	}
 
 	@Override
 	@Transactional
-	public List<Friend> getList() {
+	public Role get(String name) {
 		Session session = sessionFactory.getCurrentSession();
-		String hql = "from Friend";
-		List<Friend> list = session
-								.createQuery(hql, Friend.class)
-								.getResultList();
-		return list;
+		Role role = session.get(Role.class, name);
+		return role;
 	}
-
+	
 	@Override
 	@Transactional
-	public List<Friend> getList(long regId) {
+	public List<Role> getList() {
 		Session session = sessionFactory.getCurrentSession();
-
-		String hql = "from Friend where regId = :regId";
-
-		List<Friend> list = session
-								.createQuery(hql, Friend.class)
-								.setParameter("regId", regId)
+		String hql = "from Role";
+		List<Role> list = session
+								.createQuery(hql, Role.class)
 								.getResultList();
 		return list;
 	}
+	
+
 
 }

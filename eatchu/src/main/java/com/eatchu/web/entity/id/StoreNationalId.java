@@ -6,7 +6,7 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class StoreNationalId implements Serializable{
-	
+
 	private long storeId;
 	private long nationalCategoryId;
 	

@@ -1,5 +1,6 @@
 package com.eatchu.web.entity.id;
 
+
 import java.io.Serializable;
 
 import javax.persistence.Embeddable;
