@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.eatchu.web.service.AccountService;
+
 @Controller
 @RequestMapping("/customer/")
 public class CustomerController {
@@ -24,7 +26,7 @@ public class CustomerController {
 	@Autowired
 	private JavaMailSender mailSender;
 	@Autowired
-	private 
+	private AccountService accountService;
 	
 	@GetMapping("signup")
 	public String signup() {
@@ -39,7 +41,7 @@ public class CustomerController {
 	@PostMapping("join-email")
 	public String joinEmail(String email, HttpServletResponse response) {
 		
-		boolean duplicated = service.isEmailDuplicated(email);
+		boolean duplicated = accountService.isEmailDuplicated(email);
 		
 		if(duplicated)
 			return "redirect:email-duplicated-error";
@@ -73,21 +75,21 @@ public class CustomerController {
 			helper.setFrom("noreply@eatchu.com");
 			helper.setTo(email);
 			helper.setSubject("내말맛집 회원가입을 위한 인증메일");
-			helper.setText("<a href=\"http://211.238.142.37:8080/jaehwan/member/join-reg?id="+digest+"&em="+email+"\">가입링크</a>", true);
+			helper.setText("<a href=\"http://211.238.142.37:8080/customer/signup?id="+digest+"&em="+email+"\">가입링크</a>", true);
 		} catch (MessagingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		Cookie cookie = new Cookie("joinId", digest);
-		cookie.setPath("/jaehwan/member/");
+		cookie.setPath("/customer/");
 		cookie.setMaxAge(60*60*24);
 		
 		response.addCookie(cookie);
 		
 		mailSender.send(message);
 		
-		return "member.join-email-info";
+		return "customer.signup-email-info";
 	}
 	
 	@GetMapping("login")
