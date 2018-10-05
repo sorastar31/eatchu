@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <style>
-td{
+.td-height-50 td {
 	height: 50px;
 	min-height: 50px;
 	line-height: 50px;
