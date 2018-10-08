@@ -63,7 +63,9 @@ public class HbFriendDao implements FriendDao {
 	@Transactional
 	public List<Friend> getList(long regId) {
 		Session session = sessionFactory.getCurrentSession();
+
 		String hql = "from Friend where regId = :regId";
+
 		List<Friend> list = session
 								.createQuery(hql, Friend.class)
 								.setParameter("regId", regId)

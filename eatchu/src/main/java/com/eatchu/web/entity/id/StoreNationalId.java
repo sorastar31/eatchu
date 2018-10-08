@@ -1,10 +1,12 @@
 package com.eatchu.web.entity.id;
 
+import java.io.Serializable;
+
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class StoreNationalId {
-	
+public class StoreNationalId implements Serializable{
+
 	private long storeId;
 	private long nationalCategoryId;
 	

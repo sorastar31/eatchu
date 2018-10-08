@@ -10,6 +10,7 @@ public interface MemberDao {
 	int delete(String id);
 	
 	Member get(String id);
+	Member getByEmail(String email);	
 	List<Member> getList();
-	List<Member> getList(String nickname);	
+	List<Member> getList(String nickname);
 }

@@ -1,9 +1,11 @@
 package com.eatchu.web.entity.id;
 
+import java.io.Serializable;
+
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class FriendId {
+public class FriendId implements Serializable{
 
 	private long regId;
 	private long friendId;

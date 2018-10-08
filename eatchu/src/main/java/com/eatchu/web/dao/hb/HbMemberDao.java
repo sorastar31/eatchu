@@ -56,6 +56,19 @@ public class HbMemberDao implements MemberDao {
 
 	@Override
 	@Transactional
+	public Member getByEmail(String email) {
+		Session session = sessionFactory.getCurrentSession();
+		String sql = "from Member where email = :email";
+		
+		Member member = session.createQuery(sql, Member.class)
+						.setParameter("email", email)
+						.getSingleResult();
+		
+		return member;
+	}
+	
+	@Override
+	@Transactional
 	public List<Member> getList() {
 		Session session = sessionFactory.getCurrentSession();
 		String hql = "from Member";
@@ -76,5 +89,6 @@ public class HbMemberDao implements MemberDao {
 								.getResultList();
 		return list;
 	}
+
 
 }
