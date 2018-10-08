@@ -13,9 +13,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.eatchu.web.service.AccountService;
 
@@ -29,7 +33,17 @@ public class CustomerController {
 	private AccountService accountService;
 	
 	@GetMapping("signup")
-	public String signup() {
+	public String signup(@RequestParam(value="id", defaultValue="") String key,
+			@RequestParam(value="em", defaultValue="") String email,
+			@CookieValue(value="joinId", defaultValue="") String joinId,
+			Model model) {
+		/*if(key.equals("") || email.equals("") || !key.equals(joinId)) {
+			return"redirect:signup-error";
+		}*/
+		String uid= email.split("@")[0];
+		
+		model.addAttribute("uid", uid);
+		model.addAttribute("email",email);
 		return "customer.signup";
 	}
 	
@@ -75,7 +89,7 @@ public class CustomerController {
 			helper.setFrom("noreply@eatchu.com");
 			helper.setTo(email);
 			helper.setSubject("내말맛집 회원가입을 위한 인증메일");
-			helper.setText("<a href=\"http://211.238.142.37:8080/customer/signup?id="+digest+"&em="+email+"\">가입링크</a>", true);
+			helper.setText("<a href=\"http://localhost:8080/customer/signup?id="+digest+"&em="+email+"\">가입링크</a>", true);
 		} catch (MessagingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -90,6 +104,24 @@ public class CustomerController {
 		mailSender.send(message);
 		
 		return "customer.signup-email-info";
+	}
+	
+	@GetMapping("signup-error")
+	@ResponseBody
+	public String signupError() {
+		return"<script>"
+				+ "alert('잘못된 접근입니다.');"
+				+ "location.href = 'signup-email';"
+				+ "</script>";
+	}
+	
+	@GetMapping("email-duplicated-error")
+	@ResponseBody
+	public String emailDuplicatedError() {
+		return "<script>"
+				+ "alert('이미 가입되어있는 메일주소입니다.');"
+				+ "location.href='signup-email';"
+				+ "</script>";
 	}
 	
 	@GetMapping("login")
