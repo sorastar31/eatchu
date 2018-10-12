@@ -7,6 +7,10 @@
 	min-height: 50px;
 	line-height: 50px;
 }
+label{
+	margin: 0;
+	padding: 0;
+}
 
 input {
 	border: 0px;
@@ -18,6 +22,31 @@ input {
 	text-align: center;
 }
 
+.flex{
+	display: flex;
+}
+.account-iconset{
+	position: relative;
+	margin: auto 0;
+	display: inline-block;
+	width: 25px; 
+	height: 25px;
+	text-indent: -999px;
+	overflow: hidden;
+}
+.id-label {
+	background: url("/resources/images/account-icon-set.png") no-repeat 0px 0px;
+}
+.is-validated{
+	background: url("/resources/images/account-icon-set.png") no-repeat 0px -25px;
+}
+.is-invalidated{
+	background: url("/resources/images/account-icon-set.png") no-repeat -25px -25px;
+}
+
+.inline-block{
+	display: inline-block;
+}
 #main>h1 {
 	width: 100%;
 	border-bottom: 1px solid #a0a0a0;
@@ -34,9 +63,10 @@ input {
 }
 
 #sign-info input[type="text"] {
-	width: 90%;
+	display: inline-block;
+	margin: 0 auto;
+	width: 80%;
 	height: 30px;
-	left: 5%;
 	position: relative;
 	border-bottom: 2px solid rgb(160, 160, 160);
 	padding-left: 5px;
@@ -62,6 +92,11 @@ input {
 #sign-info .profile-box {
 	position: relative;
 	display: inline-block;
+}
+
+#sign-info td {
+	line-height: 100%;
+	vertical-align: middle;
 }
 
 .profile-box label {
@@ -154,7 +189,7 @@ input {
 	<h1>회원가입</h1>
 	<section id="sign-info">
 		<h1 class="hidden">정보 입력 부분</h1>
-		<form>
+		<form method="POST">
 			<table>
 				<tbody>
 					<tr>
@@ -167,8 +202,15 @@ input {
 						</td>
 					</tr>
 					<tr>
-						<td><input name="id" type="text" value="${uid}"
-							placeholder="아이디" required="required" /></td>
+						<td class="flex">
+							<div class="account-iconset id-label">
+								아이디
+							</div>
+							<input name="id" type="text" value="${uid}" pattern="[a-zA-Z0-9]{4,20}"	placeholder="아이디" required="required" />
+							<div class="account-iconset">
+								유효성 검사
+							</div>
+						</td>
 					</tr>
 					<tr>
 						<td><input name="email" type="text" value="${email}"
@@ -205,39 +247,79 @@ input {
 </section>
 
 <script type="text/javascript">
-	window
-			.addEventListener(
-					"load",
-					function() {
-						var profileBox = document.querySelector(".profile-box");
-						var profileInput = profileBox
-								.querySelector("#profile-input");
-						var profileLabel = profileBox.querySelector("label");
-						var profileToggle = profileBox
-								.querySelector(".profile-toggle");
+	window.addEventListener("load",	function() {
+		var section = document.querySelector("#sign-info");
+		var idInput = section.querySelector('input[name="id"]');
+		var idValidity = idInput.nextElementSibling;
+		var profileBox = section.querySelector(".profile-box");
+		var profileInput = profileBox.querySelector("#profile-input");
+		var profileLabel = profileBox.querySelector("label");
+		var profileToggle = profileBox.querySelector(".profile-toggle");
+		var id = null;
+		
+		idInput.onkeyup = function(e){
+			id = idInput.value;
+			var regex = new RegExp("[a-zA-Z0-9]{4,20}");
+			var test = regex.test(id);
+			
+			if(!test){
+				idValidity.classList.add('is-invalidated');
+				idValidity.classList.remove('is-validated');
+				return;
+			}
+			
+			var request = new XMLHttpRequest();
 
-						profileInput.onchange = function(e) {
-							var reader;
-							if (e.target.files[0]) {
-								reader = new FileReader();
-								reader.readAsDataURL(e.target.files[0]);
-								reader.onload = function(e) {
-									var url = e.target.result;
-									profileLabel.style.background = 'url("'
-											+ url + '") no-repeat center';
-									profileLabel.style.backgroundSize = "cover";
-									profileToggle.style.display = "block";
-								};
-							} else {
-								profileLabel.style.background = 'url("/resources/images/profile.png")';
-								profileToggle.style.display = "none";
-							}
-						};
+			request.onload = function(e){
+					var duplicated = JSON.parse(request.responseText);
+					if(duplicated){
+						idValidity.classList.add('is-invalidated');
+						idValidity.classList.remove('is-validated');
+					}else{
+						idValidity.classList.remove('is-invalidated');
+						idValidity.classList.add('is-validated');
+					};
+			};
+			request.open("GET", "is-id-duplicated?id="+id, true);
+			request.send();
+		};
+		
+		profileInput.onchange = function(e) {
+			var reader;
+			var file = e.target.files[0];
+			if (file) {
+				
+				if(file.type.indexOf("image/") < 0){
+					alert("이미지만 입력해주세요.");
+					profileInput.removeAttribute(file);
+					return;
+				};
+				
+				if(file.size > 1024*1024*10){
+					alert("10MB 이하의 이미지만 사용할 수 있습니다.");
+					profileInput.removeAttribute(file);
+					return;
+				};
+				
+				reader = new FileReader();
+				reader.readAsDataURL(e.target.files[0]);
+				reader.onload = function(e) {
+					var url = e.target.result;
+					profileLabel.style.background = 'url("'+ url + '") no-repeat center';
+					profileLabel.style.backgroundSize = "cover";
+					profileToggle.style.display = "block";
+				};
+				} else {
+					profileLabel.style.background = 'url("/resources/images/profile.png")';
+					profileToggle.style.display = "none";
+				};
+		};
 
-						profileToggle.onclick = function() {
-							profileInput.removeAttribute(profileInput.files[0]);
-							profileLabel.style.background = 'url("/resources/images/profile.png")';
-							this.style.display = "none";
-						};
-					});
+		profileToggle.onclick = function() {
+			profileInput.removeAttribute(profileInput.files[0]);
+			profileLabel.style.background = 'url("/resources/images/profile.png")';
+			this.style.display = "none";
+		};
+		
+	});
 </script>
