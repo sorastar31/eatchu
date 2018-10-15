@@ -10,13 +10,12 @@
 }
 #search-box{
 	position: fixed;
-	margin-left: 15px;
 	top: 91px;
 	left: 0px;
 	right: 0px;
-	width: 90%;
-	height: 50px;
-	background: #fff;
+	width: 100%;
+	height: 45px;
+	background: #e9e9e9;
 
 	border-bottom: 3px solid #e9e9e9;
 	
@@ -24,8 +23,8 @@
 	text-align: center;
 }
 	#search-box > input{
-		margin: 5px 10px;
-		width: 80%;
+		margin: 5px 5px;
+		width: 90%;
 		height: 30px;
 	}
 .img{
