@@ -3,6 +3,7 @@ package com.eatchu.web.controller.customer;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
+import java.util.regex.Pattern;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -95,11 +96,16 @@ public class CustomerController {
 			e.printStackTrace();
 		}
 		
-		Cookie cookie = new Cookie("joinId", digest);
-		cookie.setPath("/customer/");
-		cookie.setMaxAge(60*60*24);
+		Cookie idCookie = new Cookie("joinId", digest);
+		idCookie.setPath("/customer/");
+		idCookie.setMaxAge(60*60*24);
 		
-		response.addCookie(cookie);
+		Cookie emailCookie = new Cookie("email", email);
+		emailCookie.setPath("/customer/");
+		emailCookie.setMaxAge(60*60*24);
+		
+		response.addCookie(idCookie);
+		response.addCookie(emailCookie);
 		
 		mailSender.send(message);
 		
@@ -122,6 +128,18 @@ public class CustomerController {
 				+ "alert('이미 가입되어있는 메일주소입니다.');"
 				+ "location.href='signup-email';"
 				+ "</script>";
+	}
+	
+	@GetMapping("is-id-duplicated")
+	@ResponseBody
+	public String isIdDuplicated(String id) {
+		
+		boolean isDuplicated = accountService.isIdDuplicated(id);
+		
+		if(isDuplicated)
+			return "true";
+		
+		return "false";
 	}
 	
 	@GetMapping("login")

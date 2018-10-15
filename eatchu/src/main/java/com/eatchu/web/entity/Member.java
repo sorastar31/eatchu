@@ -16,7 +16,7 @@ public class Member {
 	private String nickname;
 	private String pwd;
 	private int genderId;
-	private int birthday;
+	private int birthYear;
 	private String photo;
 	@Column(insertable=false)
 	private Date regDate;
@@ -25,7 +25,7 @@ public class Member {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Member(String id, String email, String nickname, String pwd, int genderId, int birthday, String photo,
+	public Member(String id, String email, String nickname, String pwd, int genderId, int birthYear, String photo,
 			Date regDate) {
 		super();
 		this.id = id;
@@ -33,7 +33,7 @@ public class Member {
 		this.nickname = nickname;
 		this.pwd = pwd;
 		this.genderId = genderId;
-		this.birthday = birthday;
+		this.birthYear = birthYear;
 		this.photo = photo;
 		this.regDate = regDate;
 	}
@@ -78,12 +78,12 @@ public class Member {
 		this.genderId = genderId;
 	}
 
-	public int getBirthday() {
-		return birthday;
+	public int getBirthYear() {
+		return birthYear;
 	}
 
-	public void setBirthday(int birthday) {
-		this.birthday = birthday;
+	public void setBirthYear(int birthYear) {
+		this.birthYear = birthYear;
 	}
 
 	public String getPhoto() {
@@ -105,7 +105,7 @@ public class Member {
 	@Override
 	public String toString() {
 		return "Member [id=" + id + ", email=" + email + ", nickname=" + nickname + ", pwd=" + pwd + ", genderId="
-				+ genderId + ", birthday=" + birthday + ", photo=" + photo + ", regDate=" + regDate + "]";
+				+ genderId + ", birthYear=" + birthYear + ", photo=" + photo + ", regDate=" + regDate + "]";
 	}
 
 

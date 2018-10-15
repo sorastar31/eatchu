@@ -22,5 +22,16 @@ public class EatchuAccountService implements AccountService {
 		
 		return false;
 	}
+
+	@Override
+	public boolean isIdDuplicated(String id) {
+		
+		Member member = memberDao.get(id);
+		
+		if(member != null)
+				return true;
+		
+		return false;
+	}
 	
 }

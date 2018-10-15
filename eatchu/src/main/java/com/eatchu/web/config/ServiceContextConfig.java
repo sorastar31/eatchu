@@ -16,8 +16,10 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
+@EnableTransactionManagement
 @ComponentScan(basePackages= {"com.eatchu.web.dao.hb", "com.eatchu.web.service"})
 public class ServiceContextConfig {
 	
@@ -27,7 +29,7 @@ public class ServiceContextConfig {
 		BasicDataSource dataSource = new BasicDataSource();
 		
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://211.238.142.37:3306/eatchudb?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8");
+		dataSource.setUrl("jdbc:mysql://211.238.142.37:3306/eatchudb?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=UTC");
 		dataSource.setUsername("eatchu");
 		dataSource.setPassword("soakfaktwlq91");
 
